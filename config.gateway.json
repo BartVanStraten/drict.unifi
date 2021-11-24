@@ -1,0 +1,36 @@
+{
+	"firewall": {
+		"modify": {
+			"LOAD_BALANCE": {
+				"description": "LOAD_BALANCE",
+				"rule": {
+					"3000": {
+						"action": "modify",
+						"destination": {
+							"address": "10.22.0.0/16"
+						},
+						"modify": {
+							"table": "1"
+						},
+						"protocol": "all"
+					}
+				}
+			}
+		}
+	},
+	"protocols": {
+		"static": {
+			"table": {
+				"1": {
+					"route": {
+						"10.22.0.0/16": {
+							"next-hop": {
+								"10.22.12.1": "''"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
